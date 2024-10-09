@@ -1,8 +1,8 @@
 function Main() {
   return (
-    <>
-      <div>main</div>
-    </>
+    <main className='container content'>
+     main
+    </main>
   );
 }
 

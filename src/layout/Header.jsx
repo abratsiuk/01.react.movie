@@ -1,9 +1,18 @@
 function Header() {
   return (
-    <>
-      <div>header</div>
-    </>
+    <nav>
+      <div className="nav-wrapper">
+        <a href="#" className="brand-logo">
+          React Movie
+        </a>
+        <ul id="nav-mobile" className="right hide-on-med-and-down">
+          <li>
+            <a href="!#">Repo</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
   );
 }
 
-export { Header }
+export { Header };
