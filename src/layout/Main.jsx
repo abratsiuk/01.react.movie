@@ -6,9 +6,10 @@ import { Search } from '../component/Search';
 class Main extends React.Component  {
   state = {
     movies:[],
-    loading:true,
-    searchCallback: (search)=>this.reloadMovies(search)
+    loading:true
   };
+
+  searchCallback = (search) => this.reloadMovies(search);
 
   componentDidMount(){
     this.reloadMovies('matrix');
@@ -25,7 +26,7 @@ class Main extends React.Component  {
   render() {
     const {movies, loading} = this.state;
     return (<main className="container content">
-      <Search searchCallback={this.state.searchCallback}/>
+      <Search searchCallback={this.searchCallback}/>
       {loading ? 
           <Preloader/> :
           <Movies movies={movies}/>}
