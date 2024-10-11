@@ -1,12 +1,12 @@
 import React from 'react';
+// import PropTypes from 'prop-types';
 
 class Search extends React.Component {
-    constructor(props){
+    constructor(){
         super();
         this.state = {
             search: ''
         };
-        this.searchCallback = props.searchCallback;
     }
 
     render(){
@@ -23,13 +23,13 @@ class Search extends React.Component {
                         onChange={event => this.setState({search: event.target.value})}
                         onKeyDown={event =>{
                             if( event.code === 'Enter' ) {
-                                this.searchCallback(this.state.search)
+                                this.props.searchCallback(this.state.search)
                             }
                         }}
                     />
                     <button
                         className="btn search-btn"
-                        onClick = { () => this.searchCallback(this.state.search)}
+                        onClick = { () => this.props.searchCallback(this.state.search)}
                     >
                         Search
                     </button>
@@ -38,5 +38,9 @@ class Search extends React.Component {
         );
     }
 }
+
+// Search.propTypes = {
+//     searchCallback: PropTypes.func.isRequired,
+//   };
 
 export { Search };
