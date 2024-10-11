@@ -9,15 +9,14 @@ class Main extends React.Component  {
     loading:true
   };
 
-  searchCallback = (search) => this.reloadMovies(search);
-
   componentDidMount(){
-    this.reloadMovies('matrix');
+    this.reloadMovies('matrix', 'all');
   }
 
-  reloadMovies = (search)=>{
+  reloadMovies = (search, type)=>{
     this.setState({loading:true});
-    fetch(`http://www.omdbapi.com/?apikey=8680c009&s=${search}`)
+    type = type === 'movie' || type === 'series' ? type : '';
+    fetch(`http://www.omdbapi.com/?apikey=8680c009&s=${search}&type=${type}`)
       .then(response=>response.json())
       .then(data=>this.setState({movies:data.Search, loading:false}))
       .catch(console.error);   
@@ -26,7 +25,7 @@ class Main extends React.Component  {
   render() {
     const {movies, loading} = this.state;
     return (<main className="container content">
-      <Search searchCallback={this.searchCallback}/>
+      <Search reloadMovies={this.reloadMovies}/>
       {loading ? 
           <Preloader/> :
           <Movies movies={movies}/>}

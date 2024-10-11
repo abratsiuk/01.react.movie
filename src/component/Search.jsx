@@ -2,37 +2,81 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class Search extends React.Component {
-    constructor(){
-        super();
-        this.state = {
-            search: ''
-        };
-    }
+    state = {
+        search: '',
+        type: 'all',
+    };
 
-    render(){
-        const {search} = this.state;
-        
+    handleType = (event) => {
+        this.setState({ type: event.target.dataset.type }, this.handleFilter);
+    };
+
+    handleFilter = () => {
+        this.props.reloadMovies(this.state.search, this.state.type);
+    };
+
+    render() {
+        const { search } = this.state;
+
         return (
-            <div className="row">
+            <div className='row'>
                 <div className='input-field'>
-                    <input 
+                    <input
                         placeholder='search'
-                        type='search' 
+                        type='search'
                         className='validate'
                         value={search}
-                        onChange={event => this.setState({search: event.target.value})}
-                        onKeyDown={event =>{
-                            if( event.code === 'Enter' ) {
-                                this.props.searchCallback(this.state.search)
+                        onChange={(event) =>
+                            this.setState({ search: event.target.value })
+                        }
+                        onKeyDown={(event) => {
+                            if (event.code === 'Enter') {
+                                this.handleFilter();
                             }
                         }}
                     />
                     <button
-                        className="btn search-btn"
-                        onClick = { () => this.props.searchCallback(this.state.search)}
+                        className='btn search-btn'
+                        onClick={this.handleFilter}
                     >
                         Search
                     </button>
+
+                    <div>
+                        <label>
+                            <input
+                                className='with-gap'
+                                name='type'
+                                type='radio'
+                                data-type='all'
+                                onChange={this.handleType}
+                                checked={this.state.type === 'all'}
+                            />
+                            <span>All</span>
+                        </label>
+                        <label>
+                            <input
+                                className='with-gap'
+                                name='type'
+                                type='radio'
+                                data-type='movie'
+                                onChange={this.handleType}
+                                checked={this.state.type === 'movie'}
+                            />
+                            <span>Movies only</span>
+                        </label>
+                        <label>
+                            <input
+                                className='with-gap'
+                                name='type'
+                                type='radio'
+                                data-type='series'
+                                onChange={this.handleType}
+                                checked={this.state.type === 'series'}
+                            />
+                            <span>Series only</span>
+                        </label>
+                    </div>
                 </div>
             </div>
         );
@@ -40,7 +84,7 @@ class Search extends React.Component {
 }
 
 Search.propTypes = {
-    searchCallback: PropTypes.func.isRequired,
-  };
+    reloadMovies: PropTypes.func.isRequired,
+};
 
 export { Search };
