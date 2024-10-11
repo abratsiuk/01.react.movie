@@ -1,5 +1,5 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 class Search extends React.Component {
     constructor(){
@@ -39,8 +39,8 @@ class Search extends React.Component {
     }
 }
 
-// Search.propTypes = {
-//     searchCallback: PropTypes.func.isRequired,
-//   };
+Search.propTypes = {
+    searchCallback: PropTypes.func.isRequired,
+  };
 
 export { Search };
