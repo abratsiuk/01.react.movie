@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 function Search(props) {
-    const [search, setSearch] = useState('');
+    const [search, setSearch] = useState('matrix');
     const [type, setType] = useState('all');
     const { reloadMovies } = props;
 
