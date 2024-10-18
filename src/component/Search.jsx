@@ -36,7 +36,7 @@ class Search extends React.Component {
                         }}
                     />
                     <button
-                        className='btn search-btn'
+                        className='btn search-btn light-blue accent-4'
                         onClick={this.handleFilter}
                     >
                         Search
