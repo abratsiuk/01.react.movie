@@ -10,10 +10,6 @@ function Main() {
     const [movies, setMovies] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        reloadMovies('matrix', 'all');
-    }, []);
-
     const reloadMovies = (search, type) => {
         setLoading(true);
         const typeParam = type !== 'all' ? `&type=${type}` : '';
@@ -29,6 +25,10 @@ function Main() {
                 setLoading(false);
             });
     };
+
+    useEffect(() => {
+        reloadMovies('matrix', 'all');
+    }, []);
 
     return (
         <main className='container content'>
