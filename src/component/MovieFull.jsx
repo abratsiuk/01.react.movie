@@ -1,19 +1,19 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-function MovieItem(props) {
+function MovieFull(props) {
     const {
         Title: title,
         Year: year,
         imdbID: id,
         Type: type,
         Poster: poster,
-    } = props;
+    } = props?.movie;
+    console.log(props.movie);
 
     return (
         <div
             id={id}
-            className='card movie-item'
+            className='card movie-full'
         >
             <div className='card-image waves-effect waves-block waves-light'>
                 {poster === 'N/A' ? (
@@ -42,12 +42,5 @@ function MovieItem(props) {
         </div>
     );
 }
-MovieItem.propTypes = {
-    Title: PropTypes.string.isRequired,
-    Year: PropTypes.string.isRequired,
-    imdbID: PropTypes.string.isRequired,
-    Type: PropTypes.string.isRequired,
-    Poster: PropTypes.string,
-};
 
-export { MovieItem };
+export { MovieFull };
