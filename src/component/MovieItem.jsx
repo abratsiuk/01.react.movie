@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 function MovieItem(props) {
@@ -10,10 +11,13 @@ function MovieItem(props) {
         Poster: poster,
     } = props;
 
+    const navigate = useNavigate();
     return (
         <div
             id={id}
             className='card movie-item'
+            onClick={() => navigate(`/movie/${id}`)}
+            style={{ cursor: 'pointer' }}
         >
             <div className='card-image waves-effect waves-block waves-light'>
                 {poster === 'N/A' ? (
