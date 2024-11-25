@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function Movie(props) {
+function MovieItem(props) {
     const {
         Title: title,
         Year: year,
@@ -13,7 +13,7 @@ function Movie(props) {
     return (
         <div
             id={id}
-            className='card movie'
+            className='card movie-item'
         >
             <div className='card-image waves-effect waves-block waves-light'>
                 {poster === 'N/A' ? (
@@ -41,7 +41,7 @@ function Movie(props) {
         </div>
     );
 }
-Movie.propTypes = {
+MovieItem.propTypes = {
     Title: PropTypes.string.isRequired,
     Year: PropTypes.string.isRequired,
     imdbID: PropTypes.string.isRequired,
@@ -49,4 +49,4 @@ Movie.propTypes = {
     Poster: PropTypes.string,
 };
 
-export { Movie };
+export { MovieItem };
