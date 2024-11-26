@@ -32,11 +32,16 @@ const getActorImageShort = async (actor) => {
     let resp = {};
     try {
         const firstItem = data.items[0];
+
         const title = firstItem.title || 'No title';
         const link = firstItem.link || 'No link';
         const image =
             firstItem.pagemap?.metatags?.[0]?.['og:image'] || 'No image';
-        resp = { title, link, image };
+        const description =
+            firstItem.pagemap?.metatags?.[0]?.['og:description'] ||
+            'No description';
+
+        resp = { title, link, image, description };
     } catch (err) {
         console.error(err);
         return '';

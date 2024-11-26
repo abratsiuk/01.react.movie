@@ -1,7 +1,7 @@
 import React from 'react';
 
 function ActorFull(props) {
-    const { title, link, image } = props.actor;
+    const { title, link, image, description } = props.actor;
 
     return (
         <div className='card actor-full'>
@@ -22,9 +22,14 @@ function ActorFull(props) {
             </div>
             <div className='card-content'>
                 <span className='card-title activator grey-text text-darken-4'>
-                    {title}
+                    <a
+                        href={link}
+                        target='_blank'
+                    >
+                        {title}
+                    </a>
                 </span>
-                <p>imdb link: {link}</p>
+                <p>{description}</p>
             </div>
         </div>
     );

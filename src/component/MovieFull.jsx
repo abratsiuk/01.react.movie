@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function MovieFull(props) {
     const {
@@ -8,6 +8,7 @@ function MovieFull(props) {
         imdbID: id,
         Type: type,
         Poster: poster,
+        Actors: actors,
     } = props?.movie;
     const navigate = useNavigate();
 
@@ -15,8 +16,6 @@ function MovieFull(props) {
         <div
             id={id}
             className='card movie-full'
-            onClick={() => navigate(`/actor/Keanu Reeves`)}
-            style={{ cursor: 'pointer' }}
         >
             <div className='card-image waves-effect waves-block waves-light'>
                 {poster === 'N/A' ? (
@@ -40,7 +39,22 @@ function MovieFull(props) {
                 <p>
                     {year} <span className='right'>{type}</span>
                 </p>
-                <p>imdbID: {id}</p>
+                <p>
+                    <a
+                        href={`https://www.imdb.com/title/${id}/`}
+                        target='_blank'
+                    >
+                        {title} in IMDB
+                    </a>
+                </p>
+                <p>
+                    Actors:{' '}
+                    {actors.split(',').map((actor) => (
+                        <p>
+                            <Link to={`/actor/${actor}`}>{actor}</Link>
+                        </p>
+                    ))}
+                </p>
             </div>
         </div>
     );
