@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function MovieFull(props) {
     const {
@@ -8,12 +9,14 @@ function MovieFull(props) {
         Type: type,
         Poster: poster,
     } = props?.movie;
-    console.log(props.movie);
+    const navigate = useNavigate();
 
     return (
         <div
             id={id}
             className='card movie-full'
+            onClick={() => navigate(`/actor/Keanu Reeves`)}
+            style={{ cursor: 'pointer' }}
         >
             <div className='card-image waves-effect waves-block waves-light'>
                 {poster === 'N/A' ? (

@@ -4,6 +4,7 @@ import { Header } from './layout/Header';
 import { Main } from './pages/Main';
 import { Footer } from './layout/Footer';
 import { Movie } from './pages/Movie';
+import { Actor } from './pages/Actor';
 import { NotFound } from './pages/NotFound';
 
 function App() {
@@ -20,6 +21,11 @@ function App() {
                         <Route
                             path='/movie/:id'
                             element={<Movie />}
+                        />
+                        />
+                        <Route
+                            path='/actor/:actorName'
+                            element={<Actor />}
                         />
                         <Route
                             path='*'
